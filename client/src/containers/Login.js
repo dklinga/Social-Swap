@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import {Redirect} from "react-router-dom";
 import API from "../utils/API";
+import Hero from "../components/Hero";
+import Container from "../components/Container";
 
 class Login extends Component {
   state = {
@@ -37,6 +39,13 @@ class Login extends Component {
     }
 
     return (
+      <div> 
+      <Hero backgroundImage="https://cdn.makeawebsitehub.com/wp-content/uploads/2016/04/social_media.jpg">
+      <h1>Social Swap</h1>
+      <h2>The One Stop Shop for Networking!</h2>
+    </Hero>
+
+
       <div className="container my-5">
         <div className="row justify-content-center">
           <form>
@@ -68,6 +77,7 @@ class Login extends Component {
           </form>
 
         </div>
+      </div>
       </div>
     )
   }

@@ -46,13 +46,13 @@ class Main extends Component {
       <Container style={{ marginTop: 30 }}>
         <Row>
           <Col size="md-12">
-            <h1>Welcome To Social Swap!</h1>
+            <h1 class="text-center">Welcome To Social Swap!</h1>
           </Col>
         </Row>
         <Row>
           <Col size="md-12">
-            <p>
-  This can be the landing page with a short description of what the app does. When we decide on a final format the nav bar will only have the sign up and login buttons not the links to the other pages.
+            <p class="text-center">
+  This can be the landing page with a short description of what the app does.
             </p>
           </Col>
         </Row>
@@ -62,25 +62,28 @@ class Main extends Component {
         </div>
       </div>
     </nav>
-    <div className="container">
-      <div className="row">
-        <div className="col-md-6 col-md-offset-3">
-          <h2>Login</h2>
-          <form className="login">
-            <div className="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" className="form-control" id="email-input" placeholder="Email" />
-            </div>
-            <div className="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" className="form-control" id="password-input" placeholder="Password" />
-            </div>
-            <button type="submit" className="btn btn-default">Login</button>
-          </form>
-          <br />
-          <p>Or sign up <a href="/">here</a></p>
-        </div>
-      </div>
+    <div className="container alert alert-dark">
+<Container style={{ marginTop: 30 }}>
+<div className="row mt-5 mx-auto text-center content-row">
+<div className="col-md-6 col-sm-6">
+  <h3 className="mb-4 page-text">Create an Event</h3>
+  <button className="btn btn-warning mr-2" id="newEventButton" type="button">New Event</button>
+  <span id="newEventCode"></span>
+</div>
+<div className="col-md-4 col-sm-4">
+  <h3 className="mb-4 page-text">Join an Event</h3>
+  <div className="input-group">
+    <input type="text" className="form-control" id="eventInput" placeholder="Event Code" />
+    <div className="input-group-append">
+      <button className="btn btn-outline-primary" id="joinEventButton" type="button">Submit</button>
+    </div>
+  </div>
+</div>
+</div>
+
+</Container>
+
+
     </div>
       </Container>
     </div>
