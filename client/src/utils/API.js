@@ -39,5 +39,9 @@ export default {
   // join event
   joinEvent: function(code){
     return axios.get(`/api/events/${code}`)
+  },
+
+  checkForEvents: function(userName){
+    return axios.get(`/api/users/${userName}`)
   }
 }

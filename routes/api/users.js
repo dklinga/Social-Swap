@@ -33,14 +33,14 @@ router
     res.json(false);
   })
 
-// Matches with "/api/user/:id"
+// Matches with "/api/users/:id"
 router
   .route('/:id')
-  .get(usersController.findById)
+  .get(usersController.findEvents)
   .put(usersController.update)
   .delete(usersController.remove);
 
-// register a new user ("/api/user/register")
+// register a new user ("/api/users/register")
 router
   .route('/register')
   .post(usersController.register);
