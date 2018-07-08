@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Redirect} from "react-router-dom";
 import API from "../utils/API";
 import Hero from "../components/Hero";
-import Container from "../components/Container";
+// import Container from "../components/Container";
 
 class Login extends Component {
   state = {
