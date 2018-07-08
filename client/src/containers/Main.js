@@ -75,7 +75,7 @@ class Main extends Component {
     event.preventDefault();
     API
       .joinEvent(this.state.codeInput);
-    window.location.assign(`/event/${this.state.codeInput}`);
+    window.location.assign(`/events/${this.state.codeInput}`);
   }
 
   render() {
