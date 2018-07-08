@@ -29,5 +29,15 @@ export default {
   */
   register: function(userInfo) {
     return axios.post("/api/users/register", userInfo)
+  },
+
+  // create event
+  createEvent: function(code){
+    return axios.post('/api/events', code)
+  },
+
+  // join event
+  joinEvent: function(code){
+    return axios.get(`/api/events/${code}`)
   }
 }
