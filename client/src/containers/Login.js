@@ -3,12 +3,13 @@ import {Redirect} from "react-router-dom";
 import API from "../utils/API";
 import Hero from "../components/Hero";
 // import Container from "../components/Container";
+import Carousel from 'nuka-carousel';
 
 class Login extends Component {
   state = {
     isLoggedIn: false,
     username: "",
-    password: ""
+    password: "",
   }
 
   handleInputChange = e => {
@@ -45,9 +46,9 @@ class Login extends Component {
       <h2>The One Stop Shop for Networking!</h2>
     </Hero>
 
-
       <div className="container my-5">
-        <div className="row justify-content-center">
+        <div className="row justify-content-left">
+        <div className="col-sm-4">
           <form>
             <h3>Login!</h3>
             <div className="form-group">
@@ -75,6 +76,16 @@ class Login extends Component {
 
             <button type="submit" className="btn btn-success" onClick={this.login}>Login</button>
           </form>
+          </div>
+
+          <div className="col-sm-8">
+            <Carousel>
+              <img src="https://venturebeat.com/wp-content/uploads/2017/07/untitled-design.jpg?fit=578%2C409&strip=all" />
+              <img src="https://cdn.makeawebsitehub.com/wp-content/uploads/2016/04/social_media.jpg" />
+              <img src="https://image.freepik.com/free-vector/social-network-background-with-icons_23-2147497535.jpg" />
+            </Carousel>
+    
+          </div>
 
         </div>
       </div>
