@@ -33,7 +33,7 @@ class Events extends Component {
 
   eventCheck = () => {
     API
-      .checkForEvents(this.state.username)
+      .searchEvents(this.state.username)
       .then(res => this.setState({
         event: res.data.code
       }))

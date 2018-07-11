@@ -41,7 +41,7 @@ export default {
     return axios.get(`/api/events/${code}`)
   },
 
-  checkForEvents: function(userName){
+  searchEvents: function(userName){
     return axios.get(`/api/users/${userName}`)
   }
 }

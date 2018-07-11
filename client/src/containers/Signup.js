@@ -45,35 +45,38 @@ class Login extends Component {
     </Hero>
 
       <div className="container my-5">
-        <div className="row justify-content-left">
+        {/* <div className="row justify-content-left"> */}
           <form>
             <h3>Sign Up!</h3>
-            <div className="form-group">
-              <label htmlFor="username">Username</label>
-              <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChange}
-                className="form-control"
-                placeholder="Username" />
-              <small id="usernameHelp" className="form-text text-muted">Enter your username</small>
+            <div className="form-row">
+              <div className="col-md-5">
+                <label htmlFor="username">Username</label>
+                <input
+                  type="text"
+                  name="username"
+                  value={this.state.username}
+                  onChange={this.handleInputChange}
+                  className="form-control"
+                  placeholder="Username" />
+                <small id="usernameHelp" className="form-text text-muted">Enter your username</small>
+              </div>
+              <div className="col-md-5">
+                <label htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handleInputChange}
+                  className="form-control"
+                  placeholder="Password"
+                  />
+              </div>
+              <div className="col-md-2">
+                {/* <button type="submit" className="btn btn-success" onClick={this.register}>Sign Up!</button> */}
+              </div>
             </div>
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChange}
-                className="form-control"
-                placeholder="Password"
-              />
-            </div>
-
-            <button type="submit" className="btn btn-success" onClick={this.register}>Sign Up!</button>
           </form>
-        </div>
+        {/* </div> */}
       </div>
       <div className="container my-5">
       <h3>Update Profile!</h3>
@@ -152,7 +155,12 @@ class Login extends Component {
           </div>
         </div>
       </div>
-      <button className="btn btn-primary mt-2" id="contactInfoSubmit" type="submit">Submit</button>
+      <button 
+        className="btn btn-primary mt-2" 
+        id="contactInfoSubmit" 
+        type="submit"
+        onClick={this.register}
+      >Submit</button>
     </form>
     </div>
       </div>
