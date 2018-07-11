@@ -10,8 +10,8 @@ class Login extends Component {
     password: ""
   }
   
-  handleInputChange = e => {
-    const { name, value } = e.target;
+  handleInputChange = event => {
+    const { name, value } = event.target;
     this.setState({
       [name] : value
     })
@@ -84,7 +84,7 @@ class Login extends Component {
       <div className="form-row">
         <div className="col-md-6 mb-3">
           <label for="nameInput">Name</label>
-          <input type="text" class="form-control" id="nameInput" placeholder="Name" required />
+          <input type="text" className="form-control" id="nameInput" placeholder="Name" required />
           <div className="invalid-feedback">
             Please provide your name
           </div>
@@ -93,7 +93,7 @@ class Login extends Component {
         <div className="col-md-6 mb-3">
           <label for="photoInput">Upload a Photo</label>
           <div className="custom-file">
-            <input type="file" class="custom-file-input" id="userPhoto" />
+            <input type="file" className="custom-file-input" id="userPhoto" />
             <label className="custom-file-label" for="userPhoto">Choose file</label>
           </div>
         </div>
@@ -102,7 +102,7 @@ class Login extends Component {
       <div className="form-row">
         <div className="col-md-6 mb-3">
           <label for="emailInput">Email</label>
-          <input type="text" class="form-control" id="emailInput" placeholder="Email" required />
+          <input type="text" className="form-control" id="emailInput" placeholder="Email" required />
           <div className="invalid-feedback">
             Please provide your email address
           </div>
