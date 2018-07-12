@@ -83,7 +83,7 @@ class Login extends Component {
       <form> 
       <div className="form-row">
         <div className="col-md-6 mb-3">
-          <label for="nameInput">Name</label>
+          <label htmlFor="nameInput">Name</label>
           <input type="text" className="form-control" id="nameInput" placeholder="Name" required />
           <div className="invalid-feedback">
             Please provide your name
@@ -91,17 +91,17 @@ class Login extends Component {
         </div>
     
         <div className="col-md-6 mb-3">
-          <label for="photoInput">Upload a Photo</label>
+          <label htmlFor="photoInput">Upload a Photo</label>
           <div className="custom-file">
             <input type="file" className="custom-file-input" id="userPhoto" />
-            <label className="custom-file-label" for="userPhoto">Choose file</label>
+            <label className="custom-file-label" htmlFor="userPhoto">Choose file</label>
           </div>
         </div>
       </div>
    
       <div className="form-row">
         <div className="col-md-6 mb-3">
-          <label for="emailInput">Email</label>
+          <label htmlFor="emailInput">Email</label>
           <input type="text" className="form-control" id="emailInput" placeholder="Email" required />
           <div className="invalid-feedback">
             Please provide your email address
@@ -109,14 +109,14 @@ class Login extends Component {
         </div>
     
         <div className="col-md-4 mb-3">
-          <label for="phoneInput">Phone Number</label>
+          <label htmlFor="phoneInput">Phone Number</label>
           <input type="text" className="form-control" id="phoneInput" placeholder="555-222-1337" />
         </div>
       </div>
   
       <div className="form-row">
         <div className="col-md-3 mb-3">
-          <label for="twitterInput">Twitter</label>
+          <label htmlFor="twitterInput">Twitter</label>
           <div className="input-group">
             <div className="input-group-prepend">
               <span className="input-group-text" id="inputGroupPrepend">@</span>
@@ -126,7 +126,7 @@ class Login extends Component {
         </div>
     
         <div className="col-md-3 mb-3">
-          <label for="facebookInput">Facebook</label>
+          <label htmlFor="facebookInput">Facebook</label>
           <div className="input-group">
             <div className="input-group-prepend">
               <span className="input-group-text" id="inputGroupPrepend">facebook.com/</span>
@@ -136,7 +136,7 @@ class Login extends Component {
         </div>
       
         <div className="col-md-3 mb-3">
-          <label for="linkedInput">Linked In</label>
+          <label htmlFor="linkedInput">Linked In</label>
           <div className="input-group">
             <div className="input-group-prepend">
               <span className="input-group-text" id="inputGroupPrepend">linkedin.com/in/</span>
@@ -146,7 +146,7 @@ class Login extends Component {
         </div>
   
         <div className="col-md-3 mb-3">
-          <label for="githubInput">Github</label>
+          <label htmlFor="githubInput">Github</label>
           <div className="input-group">
             <div className="input-group-prepend">
               <span className="input-group-text" id="inputGroupPrepend">github.com/</span>

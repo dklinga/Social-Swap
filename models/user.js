@@ -11,9 +11,10 @@ const User = new Schema({
     type: String, 
     default: 'No Email'
   },
-  Code: {
-    type: String,
-  },
+  attending: [{
+    type: Schema.Types.ObjectId, 
+    ref: 'Events' 
+  }],
   Photo: { 
     type: String, 
     default: 'http://res.cloudinary.com/yowats0n/image/upload/v1527687540/default_user.png'
