@@ -75,6 +75,9 @@ class Login extends Component {
             </div>
 
             <button type="submit" className="btn btn-success" onClick={this.login}>Login</button>
+            <div>
+            <span>Don't have an account?<a href="/signup"> Signup</a></span>
+            </div>
           </form>
           </div>
 
