@@ -37,11 +37,12 @@ export default {
   },
 
   // join event
-  joinEvent: function(code){
+  checkIfEventExist: function(code){
     return axios.get(`/api/events/${code}`)
   },
 
-  searchEvents: function(userName){
-    return axios.get(`/api/users/${userName}`)
+  // grab users from event
+  getEventUsers: function(event) {
+    return axios.get(`/api/events/all/${event}`)
   }
 }

@@ -11,7 +11,9 @@ class Main extends Component {
     isLoggedIn: true,
     username: "",
     eventCode: "",
-    codeInput: ""
+    codeInput: "",
+    dbEventID: "",
+    goToEvent: false
   }
 
   // Check login status on load
@@ -32,20 +34,7 @@ class Main extends Component {
       })
   }
 
-  // randomly generate 4 char event code
-  // only works syncronously
-  // codeGenerator = () => {
-  //   const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZ";
-  //   let eventCode = '';
-  //   for (let i = 0; i < 4; i++) {
-  //     let rnum = Math.floor(Math.random() * chars.length);
-  //     eventCode += chars.substring(rnum, rnum + 1);
-  //   }
-  //   this.setState({eventCode: eventCode});
-  //   // return eventCode;
-  //   console.log(eventCode);
-  // }
-
+  // handle input change for state
   handleInputChange = event => {
     console.log(event.target.value);
     const value = event.target.value;
@@ -55,9 +44,9 @@ class Main extends Component {
   };
 
   // displays newly created event code
+  // creates event in db
   handleCreateEventSubmit = (event) => {
     event.preventDefault();
-    // this.codeGenerator();
     const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZ";
     let eventCode = '';
     for (let i = 0; i < 4; i++) {
@@ -71,17 +60,36 @@ class Main extends Component {
       })
   }
 
+  // check to see if event exist
+  // send user to event page if event exist
+    // else display error message
+  // edit url to display event path
   handleJoinEventSubmit = event => {
     event.preventDefault();
     API
-      .joinEvent(this.state.codeInput);
-    window.location.assign(`/events/${this.state.codeInput}`);
+      .checkIfEventExist(this.state.codeInput)
+      .then(res => {
+        this.setState({
+          dbEventID: res.data._id,
+          goToEvent: true
+        })
+        // console.log(res.data)
+      })
+      .catch(err => {
+        console.log(err);
+        // error modal
+      })
   }
+
 
   render() {
     // If user isn't logged in, don't let them see this page
     if (!this.state.isLoggedIn) {
       return <Redirect to="/login"/>
+    }
+
+    if(this.state.goToEvent){
+      return <Redirect to="/events"/>
     }
 
     return (

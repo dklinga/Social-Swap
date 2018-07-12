@@ -13,9 +13,10 @@ class Events extends Component {
   // Check login status on load
   componentDidMount() {
     this.loginCheck();
-    this.timerID = setInterval(
-      () => this.eventCheck(), 50
-    );
+
+    // this.timerID = setInterval(
+    //   () => this.eventCheck(), 50
+    // );
   }
   
   // Check login status
@@ -31,17 +32,21 @@ class Events extends Component {
     })
   }
 
-  eventCheck = () => {
+  checkEvents = () => {
     API
-      .searchEvents(this.state.username)
-      .then(res => this.setState({
-        event: res.data.code
-      }))
-      .catch(err => {
-        console.log(err);
-      })
-    clearInterval(this.timerID);
+      .getEventUsers()
   }
+  // eventCheck = () => {
+  //   API
+  //     .searchEvents(this.state.username)
+  //     .then(res => this.setState({
+  //       event: res.data.code
+  //     }))
+  //     .catch(err => {
+  //       console.log(err);
+  //     })
+  //   clearInterval(this.timerID);
+  // }
 
   render() {
     if (!this.state.isLoggedIn) {

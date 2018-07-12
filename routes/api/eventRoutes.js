@@ -14,4 +14,9 @@ router
   .put(eventController.update)
   .delete(eventController.remove);
 
+// ../api/events/all
+router
+  .route('/all/:id')
+  .get(eventController.findAllUsers)
+
 module.exports = router;
