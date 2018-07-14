@@ -2,18 +2,20 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import API from "../utils/API";
 import Hero from "../components/Hero";
+import Cards from '../components/Card'
 
 class Events extends Component {
   state = {
     isLoggedIn: true,
     username: "",
     event: "",
+    eventUsers: []
   }
 
   // Check login status on load
   componentDidMount() {
     this.loginCheck();
-    this.setEvent(this.props.match.params.event);
+    this.handleEvent(this.props.match.params.event);
   }
   
   // Check login status
@@ -29,17 +31,15 @@ class Events extends Component {
     })
   }
 
-  setEvent = (code) => {
+  handleEvent = (code) => {
     this.setState({event: code})
-    console.log("👍🏽")
-  }
-
-  getEventUsers = (code) => {
     API
       .getEventUsers(code)
+      .then(res => {
+        console.log(res.data[0]._users);
+        this.setState({eventUsers: res.data[0]._users})
+      })
   }
-
-
 
   render() {
     if (!this.state.isLoggedIn) {
@@ -56,6 +56,10 @@ class Events extends Component {
         <div className="container my-5">
           <div className="row justify-content-center">
             <h1>{this.state.event}</h1>
+          </div>
+          <div className="row">
+          {/* add users here */}
+          <Cards />
           </div>
         </div>
       </div>
