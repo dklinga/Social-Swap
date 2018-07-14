@@ -44,5 +44,15 @@ export default {
   // grab users from event
   getEventUsers: function(event) {
     return axios.get(`/api/events/all/${event}`)
+  },
+
+  // add user to event
+  addUser: function(event, userInfo) {
+    return axios.post(`/api/events/add/${event}`, userInfo)
+  },
+
+  // find user by username
+  findByUserName: function(userId) {
+    return axios.get(`/api/users/${userId}`)
   }
 }

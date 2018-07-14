@@ -12,7 +12,6 @@ class Main extends Component {
     username: "",
     eventCode: "",
     codeInput: "",
-    dbEventID: "",
     goToEvent: false
   }
 
@@ -44,7 +43,6 @@ class Main extends Component {
   };
 
   // displays newly created event code
-  // creates event in db
   handleCreateEventSubmit = (event) => {
     event.preventDefault();
     const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZ";
@@ -53,6 +51,7 @@ class Main extends Component {
       let rnum = Math.floor(Math.random() * chars.length);
       eventCode += chars.substring(rnum, rnum + 1);
     }
+    // creates event in db
     this.setState({eventCode: eventCode});
     API
       .createEvent({
@@ -68,28 +67,38 @@ class Main extends Component {
     event.preventDefault();
     API
       .checkIfEventExist(this.state.codeInput)
-      .then(res => {
-        this.setState({
-          dbEventID: res.data._id,
-          goToEvent: true
-        })
-        // console.log(res.data)
-      })
+      .then(
+        setTimeout(() => { this.addUserHelper() }, 500)
+      )
       .catch(err => {
         console.log(err);
         // error modal
       })
+      
+    this.setState({goToEvent: true});
   }
 
+  addUserHelper = () => {
+    API
+      .findByUserName(this.state.username)
+      .then(res => {
+        API
+          .addUser(this.state.codeInput, res.data)
+      })
+  }
 
-  render() {
+  render() {    
     // If user isn't logged in, don't let them see this page
     if (!this.state.isLoggedIn) {
       return <Redirect to="/login"/>
     }
 
-    if(this.state.goToEvent){
-      return <Redirect to="/events"/>
+    // on join submit, 
+    if (this.state.goToEvent) {
+      return <Redirect to={{
+        pathname: `/events/${this.state.codeInput}`,
+      }}
+      />
     }
 
     return (

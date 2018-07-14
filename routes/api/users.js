@@ -36,7 +36,7 @@ router
 // Matches with "/api/users/:id"
 router
   .route('/:id')
-  .get(usersController.findEvents)
+  .get(usersController.findByUserName)
   .put(usersController.update)
   .delete(usersController.remove);
 
@@ -44,5 +44,6 @@ router
 router
   .route('/register')
   .post(usersController.register);
+
 
 module.exports = router;

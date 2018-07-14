@@ -46,5 +46,16 @@ module.exports = {
       .populate('_users')
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  addUser: function(req, res) {
+    // console.log(req.params.id)
+    Events
+      .findOneAndUpdate(
+        {Code: req.params.id},
+        {$push: {_users: req.body}},
+        // {safe: true, upsert: true},
+      )
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 }
