@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import API from "../utils/API";
 import Hero from "../components/Hero";
-import Cards from '../components/Card'
+import Cards from '../components/Card';
 
 class Events extends Component {
   state = {
@@ -33,12 +33,13 @@ class Events extends Component {
 
   handleEvent = (code) => {
     this.setState({event: code})
-    API
-      .getEventUsers(code)
-      .then(res => {
-        console.log(res.data[0]._users);
-        this.setState({eventUsers: res.data[0]._users})
-      })
+    // TODO: figure out error message for no event
+      API
+        .getEventUsers(code)
+        .then(res => {
+          console.log(res.data[0]._users);
+          this.setState({eventUsers: res.data[0]._users})
+        })
   }
 
   render() {
@@ -59,7 +60,7 @@ class Events extends Component {
           </div>
           <div className="row">
           {/* add users here */}
-          <Cards />
+          <Cards eventUsers={this.state.eventUsers}/>
           </div>
         </div>
       </div>
