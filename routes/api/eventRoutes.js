@@ -19,4 +19,9 @@ router
   .route('/all/:id')
   .get(eventController.findAllUsers)
 
+// ../api/events/add/:id
+router
+  .route('/add/:id')
+  .post(eventController.addUser)
+
 module.exports = router;

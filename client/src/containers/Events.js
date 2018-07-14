@@ -13,10 +13,7 @@ class Events extends Component {
   // Check login status on load
   componentDidMount() {
     this.loginCheck();
-
-    // this.timerID = setInterval(
-    //   () => this.eventCheck(), 50
-    // );
+    this.setEvent(this.props.match.params.event);
   }
   
   // Check login status
@@ -32,21 +29,17 @@ class Events extends Component {
     })
   }
 
-  checkEvents = () => {
-    API
-      .getEventUsers()
+  setEvent = (code) => {
+    this.setState({event: code})
+    console.log("👍🏽")
   }
-  // eventCheck = () => {
-  //   API
-  //     .searchEvents(this.state.username)
-  //     .then(res => this.setState({
-  //       event: res.data.code
-  //     }))
-  //     .catch(err => {
-  //       console.log(err);
-  //     })
-  //   clearInterval(this.timerID);
-  // }
+
+  getEventUsers = (code) => {
+    API
+      .getEventUsers(code)
+  }
+
+
 
   render() {
     if (!this.state.isLoggedIn) {
