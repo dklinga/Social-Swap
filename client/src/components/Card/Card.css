@@ -1,0 +1,20 @@
+.social-div {
+    display: grid;
+    grid-template-columns: min-content 1fr min-content;
+    grid-template-rows: min-content;
+    grid-template-areas: "twitter . button" "fb . button" "linkedin . button" "github . button"
+  }
+  
+  .card {
+    display: inline-block;
+    margin: 0 5px 10px 5px;
+  }
+  
+  .social-inner {
+    display: grid;
+    grid-template-columns: min-content max-content;
+  }
+  
+  .twitter {
+    grid-area: twitter;
+  }
