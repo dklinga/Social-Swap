@@ -2,7 +2,7 @@ import React from "react";
 import "../Card/Card.css";
 
 const Card = props => (
-  <div>
+  <div className="main-card-div">
     {props.eventUsers.map(user => (
       <div key={user.id}>
         <div className="card">
