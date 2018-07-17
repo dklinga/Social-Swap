@@ -32,21 +32,23 @@ class Events extends Component {
   }
 
   handleEvent = (code) => {
-    this.setState({event: code})
-    // TODO: figure out error message for no event
+    if(code){
+      this.setState({event: code})
+      // TODO: figure out error message for no event
       API
         .getEventUsers(code)
         .then(res => {
           console.log(res.data[0]._users);
           this.setState({eventUsers: res.data[0]._users})
         })
+    }
   }
 
   render() {
     if (!this.state.isLoggedIn) {
       return <Redirect to="/login"/>
     }
-
+    const isEvent = this.state.event;
     return (
       <div> 
         <Hero backgroundImage="https://cdn.makeawebsitehub.com/wp-content/uploads/2016/04/social_media.jpg">
@@ -56,7 +58,8 @@ class Events extends Component {
 
         <div className="container-fluid my-5">
           <div className="row justify-content-center">
-            <h1>{this.state.event}</h1>
+            {/* <h1>{this.state.event}</h1> */}
+            <h1>{isEvent ? this.state.event : "No Event Selected"}</h1>
           </div>
           <div className="row justify-content-center card-row mt-5">
           {/* add users here */}
