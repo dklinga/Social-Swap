@@ -47,12 +47,18 @@ export default {
   },
 
   // add user to event
-  addUser: function(event, userInfo) {
+  addUserToEvent: function(event, userInfo) {
     return axios.post(`/api/events/add/${event}`, userInfo)
   },
 
   // find user by username
   findByUserName: function(userId) {
     return axios.get(`/api/users/${userId}`)
+  },
+
+  // add user to db
+  addUserToDb: function(id, userInfo) {
+    return axios.put(`/api/users/${id}`, userInfo)
   }
+
 }

@@ -83,7 +83,7 @@ class Main extends Component {
       .findByUserName(this.state.username)
       .then(res => {
         API
-          .addUser(this.state.codeInput, res.data)
+          .addUserToEvent(this.state.codeInput, res.data)
       })
   }
 
