@@ -5,11 +5,37 @@ import Hero from "../components/Hero";
 
 class Login extends Component {
   state = {
+    isLoggedIn: true,
     success: false,
     username: "",
-    password: ""
+    password: "",
+    name: "",
+    photo: "",
+    email: "",
+    phone: "",
+    twitter: "",
+    fb: "",
+    linked: "",
+    github: "",
+
   }
   
+  componentDidMount(){
+    this.loginCheck();
+  }
+  // Check login status
+  loginCheck = () => {
+    API
+    .loginCheck()
+    .then(res => this.setState({
+      isLoggedIn: res.data.isLoggedIn, username: res.data.username
+    }))
+    .catch(err => {
+      console.log(err);
+      this.setState({isLoggedIn: false})
+    })
+  }
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -30,14 +56,40 @@ class Login extends Component {
       .catch(err => console.log(err.response.data));
   }
 
+  addUserToDb = () => {
+    API
+      .findByUserName(this.username)
+      .then(res => {
+        console.log(res);
+        // API.addUserToDb(res.data._id, {
+        //   Name: this.state.name,
+        //   Email: this.state.email,
+        //   Photo: this.state.photo,
+        //   Phone: this.state.phone,
+        //   Twitter: this.state.twitter,
+        //   Fb: this.state.fb,
+        //   Link: this.state.linked,
+        //   Git: this.state.github
+        // })
+
+      })
+  }
+
+  handleFormSubmit = (e) => {
+    this.register(e);
+    setTimeout(() => { this.addUserToDb() }, 500)
+    // this.addUserToDb();
+  }
+
   render() {
     // If Signup was a success, take them to the Login page
     if (this.state.success) {
       return <Redirect to="/login" />
     }
 
-    return (
+    // const to check if logged in
 
+    return (
       <div> 
       <Hero backgroundImage="https://cdn.makeawebsitehub.com/wp-content/uploads/2016/04/social_media.jpg">
       <h1>Social Swap</h1>
@@ -54,9 +106,11 @@ class Login extends Component {
                 <input
                   type="text"
                   name="username"
+                  // ternary values?
                   value={this.state.username}
                   onChange={this.handleInputChange}
                   className="form-control"
+                  // ternary placeholders ?
                   placeholder="Username" />
                 <small id="usernameHelp" className="form-text text-muted">Enter your username</small>
               </div>
@@ -84,7 +138,15 @@ class Login extends Component {
       <div className="form-row">
         <div className="col-md-6 mb-3">
           <label htmlFor="nameInput">Name</label>
-          <input type="text" className="form-control" id="nameInput" placeholder="Name" required />
+          <input 
+          type="text" 
+          className="form-control" 
+          id="nameInput" 
+          name="name"
+          value={this.state.name}
+          onChange={this.handleInputChange}
+          placeholder="Name" 
+          required />
           <div className="invalid-feedback">
             Please provide your name
           </div>
@@ -93,7 +155,14 @@ class Login extends Component {
         <div className="col-md-6 mb-3">
           <label htmlFor="photoInput">Upload a Photo</label>
           <div className="custom-file">
-            <input type="file" className="custom-file-input" id="userPhoto" />
+            <input 
+            type="file" 
+            className="custom-file-input" 
+            id="userPhoto"
+            name="photo"
+            value={this.state.photo}
+            onChange={this.handleInputChange}
+             />
             <label className="custom-file-label" htmlFor="userPhoto">Choose file</label>
           </div>
         </div>
@@ -102,7 +171,15 @@ class Login extends Component {
       <div className="form-row">
         <div className="col-md-6 mb-3">
           <label htmlFor="emailInput">Email</label>
-          <input type="text" className="form-control" id="emailInput" placeholder="Email" required />
+          <input 
+          type="text" 
+          className="form-control" 
+          id="emailInput" 
+          name="email"
+          value={this.state.email}
+          onChange={this.handleInputChange}
+          placeholder="Email" 
+          required />
           <div className="invalid-feedback">
             Please provide your email address
           </div>
@@ -121,7 +198,15 @@ class Login extends Component {
             <div className="input-group-prepend">
               <span className="input-group-text" id="inputGroupPrepend">@</span>
             </div>
-            <input type="text" className="form-control" id="twitterInput" placeholder="jimbosmith" aria-describedby="inputGroupPrepend" />
+            <input 
+            type="text" 
+            className="form-control" 
+            id="twitterInput" 
+            name="twitter"
+            value={this.state.twitter}
+            onChange={this.handleInputChange}
+            placeholder="jimbosmith" 
+            aria-describedby="inputGroupPrepend" />
           </div>
         </div>
     
@@ -131,7 +216,15 @@ class Login extends Component {
             <div className="input-group-prepend">
               <span className="input-group-text" id="inputGroupPrepend">facebook.com/</span>
             </div>
-            <input type="text" className="form-control" id="facebookInput" placeholder="janesmith" aria-describedby="inputGroupPrepend" />
+            <input 
+            type="text" 
+            className="form-control" 
+            id="facebookInput" 
+            name="fb"
+            value={this.state.fb}
+            onChange={this.handleInputChange}
+            placeholder="janesmith" 
+            aria-describedby="inputGroupPrepend" />
           </div>
         </div>
       
@@ -141,7 +234,15 @@ class Login extends Component {
             <div className="input-group-prepend">
               <span className="input-group-text" id="inputGroupPrepend">linkedin.com/in/</span>
             </div>
-            <input type="text" className="form-control" id="linkedInput" placeholder="willsmith" aria-describedby="inputGroupPrepend" />
+            <input 
+            type="text" 
+            className="form-control" 
+            id="linkedInput" 
+            name="linked"
+            value={this.state.linked}
+            onChange={this.handleInputChange}
+            placeholder="willsmith" 
+            aria-describedby="inputGroupPrepend" />
           </div>
         </div>
   
@@ -151,7 +252,15 @@ class Login extends Component {
             <div className="input-group-prepend">
               <span className="input-group-text" id="inputGroupPrepend">github.com/</span>
             </div>
-            <input type="text" className="form-control" id="githubInput" placeholder="cooljames" aria-describedby="inputGroupPrepend" />
+            <input 
+            type="text" 
+            className="form-control" 
+            id="githubInput" 
+            name="github"
+            value={this.state.github}
+            onChange={this.handleInputChange}
+            placeholder="cooljames" 
+            aria-describedby="inputGroupPrepend" />
           </div>
         </div>
       </div>
@@ -159,7 +268,7 @@ class Login extends Component {
         className="btn btn-primary mt-2" 
         id="contactInfoSubmit" 
         type="submit"
-        onClick={this.register}
+        onClick={this.handleFormSubmit}
       >Submit</button>
     </form>
     </div>
