@@ -25,10 +25,12 @@
 .hero h1,
 .hero h2 {
   color: white;
+  font-family: 'Bowlby One SC', sans-serif;
+  text-shadow: 5px 5px 5px red;
 }
 
 .hero h1 {
-  font-size: 60px;
+  font-size: 80px;
   padding-top: 55px;
   margin-top: 0;
 }
