@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import {Redirect} from "react-router-dom";
 import API from "../utils/API";
 import Hero from "../components/Hero";
-// import Container from "../components/Container";
 import Carousel from 'nuka-carousel';
 
 class Login extends Component {
@@ -112,7 +111,7 @@ class Login extends Component {
           <div className="row justify-content-left">
           <div className="col-sm-4">
             <form>
-              <h3>Login!</h3>
+              <h3 style={{ fontFamily: 'Merriweather, serif', fontSize: 30, marginBottom: 15 }}>Login!</h3>
               <div className="form-group">
                 <label htmlFor="username">Username</label>
                 <input

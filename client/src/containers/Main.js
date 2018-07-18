@@ -109,13 +109,13 @@ class Main extends Component {
         <Container style={{ marginTop: 30 }}>
           <Row>
             <Col size="md-12">
-              <h1 className="text-center">Create or Join an Event!</h1>
+              <h1 className="text-center" style={{ fontFamily: 'Merriweather, serif', fontSize: 50 }}>Create or Join an Event!</h1>
             </Col>
           </Row>
           <Row>
             <Col size="md-12">
-              <p className="text-center">Click 'New Event' to create a new event.</p>
-              <p className="text-center">Enter a 4 character code to join an event.</p>
+              <p className="text-center" style={{ fontFamily: 'Merriweather, serif', fontSize: 20, marginBottom: 0 }}>Click 'New Event' to create a new event.</p>
+              <p className="text-center" style={{ fontFamily: 'Merriweather, serif', fontSize: 20, marginBottom: 0 }}>Enter a 4 character code to join an event.</p>
             </Col>
           </Row>
           <nav className="navbar navbar-default">
@@ -128,7 +128,7 @@ class Main extends Component {
             <Container style={{ marginTop: 30, marginBottom: 30 }}>
               <div className="row mx-auto text-center content-row">
                 <div className="col-md-6 col-sm-6">
-                  <h3 className="mb-4 page-text">Create an Event</h3>
+                  <h3 className="mb-4 page-text" style={{ fontFamily: 'Merriweather, serif', fontSize: 25, marginBottom: 0 }}>Create an Event</h3>
                   <button className="btn btn-warning mr-2"        
                     id="newEventButton" 
                     type="button"
@@ -137,7 +137,7 @@ class Main extends Component {
                   <span id="newEventCode">{this.state.eventCode}</span>
                 </div>
                 <div className="col-md-4 col-sm-4">
-                  <h3 className="mb-4 page-text">Join an Event</h3>
+                  <h3 className="mb-4 page-text" style={{ fontFamily: 'Merriweather, serif', fontSize: 25, marginBottom: 0 }}>Join an Event</h3>
                   <div className="input-group">
                     <input 
                       type="text" 

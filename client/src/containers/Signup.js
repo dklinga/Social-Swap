@@ -112,7 +112,7 @@ class Login extends Component {
         <div className="container my-5">
           {/* <div className="row justify-content-left"> */}
           <form>
-            <h3>Sign Up!</h3>
+            <h3 style={{ fontFamily: 'Merriweather, serif', fontSize: 30, marginBottom: 15 }}>Sign Up!</h3>
             <div className="form-row">
               <div className="col-md-5">
                 <label htmlFor="username">Username</label>
@@ -146,7 +146,7 @@ class Login extends Component {
           {/* </div> */}
         </div>
         <div className="container my-5">
-          <h3>Update Profile!</h3>
+          <h3 style={{ fontFamily: 'Merriweather, serif', fontSize: 30, marginBottom: 15 }}>Update Profile!</h3>
           <form>
             <div className="form-row">
               <div className="col-md-6 mb-3">
