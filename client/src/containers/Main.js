@@ -109,14 +109,13 @@ class Main extends Component {
         <Container style={{ marginTop: 30 }}>
           <Row>
             <Col size="md-12">
-              <h1 className="text-center">Welcome To Social Swap!</h1>
+              <h1 className="text-center">Create or Join an Event!</h1>
             </Col>
           </Row>
           <Row>
             <Col size="md-12">
-              <p className="text-center">
-                This can be the landing page with a short description of what the app does.
-              </p>
+              <p className="text-center">Click 'New Event' to create a new event.</p>
+              <p className="text-center">Enter a 4 character code to join an event.</p>
             </Col>
           </Row>
           <nav className="navbar navbar-default">
