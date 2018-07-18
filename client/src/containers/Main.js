@@ -12,7 +12,8 @@ class Main extends Component {
     username: "",
     eventCode: "",
     codeInput: "",
-    goToEvent: false
+    goToEvent: false,
+    eventUsers: []
   }
 
   // Check login status on load
@@ -67,6 +68,7 @@ class Main extends Component {
     event.preventDefault();
     API
       .checkIfEventExist(this.state.codeInput)
+      .then(res => this.setState({ eventUsers: res.data._users }))
       .then(
         setTimeout(() => { this.addUserHelper() }, 500)
       )
@@ -81,8 +83,17 @@ class Main extends Component {
     API
       .findByUserName(this.state.username)
       .then(res => {
-        API
-          .addUserToEvent(this.state.codeInput, res.data)
+        // console.log(res.data)
+        for(let i = 0; i < this.state.eventUsers.length; i++){
+          // console.log(this.state.eventUsers[i])
+          if (!this.state.eventUsers[i] === res.data._id){
+            API
+              .addUserToEvent(this.state.codeInput, res.data)
+          }
+          else{
+            console.log("👍🏽")
+          }
+        }
       })
   }
 

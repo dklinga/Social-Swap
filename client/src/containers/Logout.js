@@ -1,5 +1,8 @@
 import React, {Component} from "react";
 import {Redirect} from "react-router-dom";
+import Container from "../components/Container";
+import Row from "../components/Row";
+import Col from "../components/Col";
 import API from "../utils/API";
 
 
@@ -8,11 +11,10 @@ class Logout extends Component {
     isLoggedIn: false,
     username: "",
     password: "",
+    redirect: false
   }
 
-    // Check login status on load
     componentDidMount() {
-      // this.loginCheck();
       this.logout();
     }
   
@@ -34,17 +36,27 @@ class Logout extends Component {
     API
       .logout({username: this.state.username, password: this.state.password})
       .then(res => {
-        // console.log(res.data);
         this.setState({isLoggedIn: res.data})
 
       })
       .catch(err => console.log(err.response));
+    setTimeout(() => { this.setState({redirect: true}) }, 800);
   }
 
   render() { 
-    // if (!this.state.isLoggedIn) {
+    if (this.state.redirect) {
       return <Redirect to="/login"/>
-      // }
+    }
+
+      return (
+        <div>
+          <div className="container-fluid mt-5">
+            <div className="row justify-content-center">
+              <h1>Logging you out....</h1>
+            </div>
+          </div>
+        </div>
+      ) 
     }
   }
   
