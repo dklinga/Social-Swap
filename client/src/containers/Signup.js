@@ -51,7 +51,7 @@ class Login extends Component {
         username: this.state.username,
         password: this.state.password,
         name: this.state.name,
-        photo: this.state.photo,
+        // photo: this.state.photo,
         email: this.state.email,
         phone: this.state.phone,
         twitter: this.state.twitter,
@@ -173,7 +173,7 @@ class Login extends Component {
                     className="custom-file-input"
                     id="photo"
                     name="photo"
-                    value={this.state.photo}
+                    value={this.state.photo ? this.state.photo : ""} 
                     onChange={this.handleInputChange}
                   />
                   <label className="custom-file-label" htmlFor="userPhoto">Choose file</label>
