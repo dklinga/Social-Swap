@@ -18,6 +18,9 @@ const Navbar = () => (
         <li>
           <NavLink className="nav-link" to="/events">Events</NavLink>
         </li>
+        <li>
+          <NavLink className="nav-link" to="/logout">Logout</NavLink>
+        </li>
       </div>
     </div>
   </nav>
