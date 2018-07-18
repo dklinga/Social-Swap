@@ -14,7 +14,11 @@ const Card = props => (
               </div>
               <div className="header-info">
                 <h3>{user.name}</h3>
-                <h5>{user.email}</h5>
+                {/* <h5>{user.email}</h5> */}
+                <a href={`mailto:${user.email}`} 
+                  rel="noopener noreferrer" 
+                  className="links"
+                  >{user.email}</a>
                 <p>{user.phone}</p>
               </div>
             </div>
