@@ -74,8 +74,7 @@ class Main extends Component {
         console.log(err);
         // error modal
       })
-      
-    this.setState({goToEvent: true});
+    setTimeout(() => { this.setState({goToEvent: true}) }, 800);
   }
 
   addUserHelper = () => {
