@@ -38,7 +38,6 @@ router
   .route('/:id')
   .get(usersController.findByUserName)
   .put(usersController.update)
-  .post(usersController.create)
   .delete(usersController.remove);
 
 // register a new user ("/api/users/register")

@@ -48,7 +48,6 @@ module.exports = {
   },
   register: function (req, res) {
     /* To create a new user */
-    console.log(req.body);
     const user = new User({
       username: req.body.username,
       name: req.body.name,
