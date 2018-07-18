@@ -12,6 +12,25 @@ class Login extends Component {
     password: "",
   }
 
+    // Check login status on load
+    componentDidMount() {
+      this.loginCheck();
+    }
+  
+    // Check login status
+    loginCheck = () => {
+      API
+        .loginCheck()
+        .then(res => this.setState({
+          isLoggedIn: res.data.isLoggedIn, username: res.data.username
+        }))
+        .catch(err => {
+          console.log(err);
+          this.setState({isLoggedIn: false})
+        })
+    }
+
+
   handleInputChange = e => {
     const { name, value } = e.target;
 
@@ -33,68 +52,118 @@ class Login extends Component {
       .catch(err => console.log(err.response));
   }
 
+  logout = (e) => {
+    e.preventDefault();
+    API
+      .logout({username: this.state.username, password: this.state.password})
+      .then(res => {
+        // console.log(res.data);
+        this.setState({isLoggedIn: res.data})
+
+      })
+      .catch(err => console.log(err.response));
+  }
+
   render() {
     // If user is logged in, take them to main page
-    if (this.state.isLoggedIn) {
-      return <Redirect to="/"/>
-    }
-
-    return (
-      <div> 
-      <Hero backgroundImage="https://cdn.makeawebsitehub.com/wp-content/uploads/2016/04/social_media.jpg">
-      <h1>Social Swap</h1>
-      <h2>The One Stop Shop for Networking!</h2>
-    </Hero>
-
-      <div className="container my-5">
-        <div className="row justify-content-left">
-        <div className="col-sm-4">
-          <form>
-            <h3>Login!</h3>
-            <div className="form-group">
-              <label htmlFor="username">Username</label>
-              <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChange}
-                className="form-control"
-                placeholder="Username"/>
-              <small id="usernameHelp" className="form-text text-muted">Enter your username</small>
-            </div>
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChange}
-                className="form-control"
-                placeholder="Password"
-              />
-            </div>
-
-            <button type="submit" className="btn btn-success" onClick={this.login}>Login</button>
-            <div>
-            <span>Don't have an account?<a href="/signup"> Signup</a></span>
-            </div>
-          </form>
-          </div>
-
-          <div className="col-sm-8">
-            <Carousel>
-              <img src="https://venturebeat.com/wp-content/uploads/2017/07/untitled-design.jpg?fit=578%2C409&strip=all" alt="carousel-1" />
-              <img src="https://cdn.makeawebsitehub.com/wp-content/uploads/2016/04/social_media.jpg" alt="carousel-2" />
-              <img src="https://image.freepik.com/free-vector/social-network-background-with-icons_23-2147497535.jpg" alt="carousel-3" />
-            </Carousel>
+ 
+      //return <Redirect to="/"/>
+      if (this.state.isLoggedIn) 
+      {
+        return (            
+          <div> 
+          <Hero backgroundImage="https://cdn.makeawebsitehub.com/wp-content/uploads/2016/04/social_media.jpg">
+          <h1>Social Swap</h1>
+          <h2>The One Stop Shop for Networking!</h2>
+        </Hero>
     
+          <div className="container my-5">
+            <div className="row justify-content-left">
+            <div className="col-sm-4">
+              <form>
+             <h1>Welcome to Social Swap!!!</h1>
+             
+                <h3>Log Out!</h3>
+    
+                <button type="submit" className="btn btn-success" onClick={this.logout}>Log Out!</button>
+  
+              </form>
+              </div>
+    
+              <div className="col-sm-8">
+                <Carousel>
+                  <img src="https://venturebeat.com/wp-content/uploads/2017/07/untitled-design.jpg?fit=578%2C409&strip=all" alt="carousel-1" />
+                  <img src="https://cdn.makeawebsitehub.com/wp-content/uploads/2016/04/social_media.jpg" alt="carousel-2" />
+                  <img src="https://image.freepik.com/free-vector/social-network-background-with-icons_23-2147497535.jpg" alt="carousel-3" />
+                </Carousel>
+        
+              </div>
+    
+            </div>
           </div>
-
+          </div>
+          
+      )
+  
+      }
+  else {
+      return (
+        <div> 
+        <Hero backgroundImage="https://cdn.makeawebsitehub.com/wp-content/uploads/2016/04/social_media.jpg">
+        <h1>Social Swap</h1>
+        <h2>The One Stop Shop for Networking!</h2>
+      </Hero>
+  
+        <div className="container my-5">
+          <div className="row justify-content-left">
+          <div className="col-sm-4">
+            <form>
+              <h3>Login!</h3>
+              <div className="form-group">
+                <label htmlFor="username">Username</label>
+                <input
+                  type="text"
+                  name="username"
+                  value={this.state.username}
+                  onChange={this.handleInputChange}
+                  className="form-control"
+                  placeholder="Username"/>
+                <small id="usernameHelp" className="form-text text-muted">Enter your username</small>
+              </div>
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handleInputChange}
+                  className="form-control"
+                  placeholder="Password"
+                />
+              </div>
+  
+              <button type="submit" className="btn btn-success" onClick={this.login}>Login</button>
+              <div>
+              <span>Don't have an account?<a href="/signup"> Signup</a></span>
+              </div>
+            </form>
+            </div>
+  
+            <div className="col-sm-8">
+              <Carousel>
+                <img src="https://venturebeat.com/wp-content/uploads/2017/07/untitled-design.jpg?fit=578%2C409&strip=all" alt="carousel-1" />
+                <img src="https://cdn.makeawebsitehub.com/wp-content/uploads/2016/04/social_media.jpg" alt="carousel-2" />
+                <img src="https://image.freepik.com/free-vector/social-network-background-with-icons_23-2147497535.jpg" alt="carousel-3" />
+              </Carousel>
+      
+            </div>
+  
+          </div>
         </div>
-      </div>
-      </div>
-    )
+        </div>
+      )
+    }
+    }
   }
-}
-
-export default Login;
+  
+  export default Login;
