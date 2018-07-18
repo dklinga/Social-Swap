@@ -145,8 +145,8 @@ class Login extends Component {
             <div className="col-sm-8">
               <Carousel>
                 <img src="https://venturebeat.com/wp-content/uploads/2017/07/untitled-design.jpg?fit=578%2C409&strip=all" alt="carousel-1" />
-                <img src="https://cdn.makeawebsitehub.com/wp-content/uploads/2016/04/social_media.jpg" alt="carousel-2" />
-                <img src="https://image.freepik.com/free-vector/social-network-background-with-icons_23-2147497535.jpg" alt="carousel-3" />
+                <img src="https://res.cloudinary.com/yowats0n/image/upload/v1531952857/Screen_Shot_2018-07-18_at_6.25.17_PM.jpg" alt="carousel-2" />
+                <img src="https://res.cloudinary.com/yowats0n/image/upload/v1531952857/Screen_Shot_2018-07-18_at_5.32.26_PM.jpg" alt="carousel-3" />
               </Carousel>
       
             </div>

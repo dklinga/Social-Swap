@@ -34,11 +34,10 @@ class Events extends Component {
   handleEvent = (code) => {
     if(code){
       this.setState({event: code})
-      // TODO: figure out error message for no event
       API
         .getEventUsers(code)
         .then(res => {
-          console.log(res.data[0]._users);
+          // console.log(res.data[0]._users);
           this.setState({eventUsers: res.data[0]._users})
         })
     }
