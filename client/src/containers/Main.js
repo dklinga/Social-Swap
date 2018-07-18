@@ -13,6 +13,7 @@ class Main extends Component {
     eventCode: "",
     codeInput: "",
     goToEvent: false,
+    userNotExist: false,
     eventUsers: []
   }
 
@@ -76,24 +77,26 @@ class Main extends Component {
         console.log(err);
         // error modal
       })
-    setTimeout(() => { this.setState({goToEvent: true}) }, 800);
+    setTimeout(() => { this.setState({goToEvent: true}) }, 1500);
   }
 
   addUserHelper = () => {
     API
       .findByUserName(this.state.username)
       .then(res => {
-        // console.log(res.data)
+        // console.log(res.data._id)
         for(let i = 0; i < this.state.eventUsers.length; i++){
-          // console.log(this.state.eventUsers[i])
-          if (!this.state.eventUsers[i] === res.data._id){
+          if (this.state.eventUsers[i] !== res.data._id){
+            console.log("👎🏽")
+            this.setState({ userNotExist: true })
+          }
+        }
+        setTimeout(() => { 
+          if(this.state.userNotExist){
             API
               .addUserToEvent(this.state.codeInput, res.data)
           }
-          else{
-            console.log("👍🏽")
-          }
-        }
+        }, 800)
       })
   }
 
