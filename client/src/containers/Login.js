@@ -30,7 +30,7 @@ class Login extends Component {
         this.setState({isLoggedIn: res.data})
 
       })
-      .catch(err => alert("You did not enter a login!!!"));
+      .catch(err => console.log(err.response));
   }
 
   render() {
