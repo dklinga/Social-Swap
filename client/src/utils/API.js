@@ -28,6 +28,7 @@ export default {
     }
   */
   register: function(userInfo) {
+    console.log(userInfo);
     return axios.post("/api/users/register", userInfo)
   },
 
@@ -57,8 +58,8 @@ export default {
   },
 
   // add user to db
-  addUserToDb: function(id, userInfo) {
-    return axios.put(`/api/users/${id}`, userInfo)
-  }
+  //addUserToDb: function(id, userInfo) {
+    //return axios.put(`/api/users/${id}`, userInfo)
+  //}
 
 }

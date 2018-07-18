@@ -3,31 +3,31 @@ const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const User = new Schema({
-  Name: { 
+  name: { 
     type: String, 
     default: 'No Name'
   },
-  Email: { 
+  email: { 
     type: String, 
     default: 'No Email'
   },
-  Photo: { 
+  photo: { 
     type: String, 
     default: 'http://res.cloudinary.com/yowats0n/image/upload/v1527687540/default_user.png'
   },
-  Phone: { 
+  phone: { 
     type: String, 
   },
-  Twitter: { 
+  twitter: { 
     type: String, 
   },
-  Fb: { 
+  fb: { 
     type: String, 
   },
-  Link: { 
+  link: { 
     type: String, 
   },
-  Git: { 
+  git: { 
     type: String, 
   }
 });

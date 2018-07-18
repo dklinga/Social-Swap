@@ -48,8 +48,20 @@ module.exports = {
   },
   register: function (req, res) {
     /* To create a new user */
+    console.log(req.body);
+    const user = new User({
+      username: req.body.username,
+      name: req.body.name,
+      photo: req.body.photo,
+      email: req.body.email,
+      phone: req.body.phone,
+      twitter: req.body.twitter,
+      fb: req.body.fb,
+      link: req.body.link,
+      git: req.body.link
+    })
     User
-      .register(new User({username: req.body.username}), req.body.password, function (err) {
+      .register(user, req.body.password, function (err) {
         if (err) {
           console.log('error while user register!', err);
           return res.status(422).json(err);
